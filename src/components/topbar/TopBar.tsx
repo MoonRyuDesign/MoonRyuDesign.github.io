@@ -1,33 +1,10 @@
 import { Header } from 'antd/es/layout/layout';
 import React from 'react';
-import appLogo from '../../assets/appLogo.png';
 import { useNavigate } from 'react-router-dom';
+import AppLogo from '../main/AppLogo';
+import { elements } from '../../util/data';
 
-interface Element {
-  path: string;
-  name: string;
-}
-
-const elements: Element[] = [
-  {
-    path: '/portfolio',
-    name: '포트폴리오',
-  },
-  {
-    path: '/about',
-    name: '소개',
-  },
-  {
-    path: '/location',
-    name: '찾아오는 길',
-  },
-  {
-    path: '/contact',
-    name: '견적문의',
-  },
-];
-
-const TopElement = ({ elements }: { elements: Element[] }) => {
+const TopElement = () => {
   const navigate = useNavigate();
 
   return (
@@ -38,7 +15,7 @@ const TopElement = ({ elements }: { elements: Element[] }) => {
             style={{
               margin: '0px 10px',
               cursor: 'pointer',
-              fontSize: '20px',
+              fontSize: '2vw',
             }}
             onClick={() => navigate(element.path)}
             onMouseEnter={(e) => {
@@ -56,26 +33,6 @@ const TopElement = ({ elements }: { elements: Element[] }) => {
   );
 };
 
-const AppLogo = () => {
-  const navigate = useNavigate();
-  return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
-      <img
-        src={`${appLogo}`}
-        alt="logo"
-        width="180px"
-        height="auto"
-        onClick={() => {
-          navigate('/');
-        }}
-        style={{
-          cursor: 'pointer',
-        }}
-      />
-    </div>
-  );
-};
-
 const TopBar = () => {
   return (
     <Header
@@ -85,6 +42,7 @@ const TopBar = () => {
         boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
         position: 'fixed',
         width: '100%',
+        height: '60px',
         zIndex: 1000,
       }}
     >
@@ -92,7 +50,7 @@ const TopBar = () => {
         <AppLogo />
       </div>
       <div style={{ marginLeft: 'auto', marginRight: '24px' }}>
-        <TopElement elements={elements} />
+        <TopElement />
       </div>
     </Header>
   );
